@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_form_inherit_partnercontrol_hun" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.partnercontrol_hun</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page name="partnercontrol_hu" string="PartnerControl.hu"
+                      groups="oerp_partnercontrol_base.group_partnercontrol_user"
+                      attrs="{'invisible': [('is_company','=',False)]}">
+                    <group name="partnercontrol_base">
+                        <field name="pchu_partner_id"/>
+                        <field name="pchu_url" widget="url"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button type="object" class="oe_stat_button" icon="fa-sign-in" name="open_bisnode_url"
+                        attrs="{'invisible': [('pchu_url', '=', False)]}">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_text">
+                            Open Partner Control
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_short_form_inherit_partnercontrol_hun" model="ir.ui.view">
+        <field name="name">res.partner.simplified.form.inherit.partnercontrol_hun</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_simple_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mobile']/.." position="after">
+                <group>
+                    <field name="pchu_partner_id"/>
+                    <field name="pchu_url" widget="url"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_oerp_partnercontrol_hu_autocomplete" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.oerp_partnercontrol_hu_autocomplete</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="21"/>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='module_partner_autocomplete']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//div[@id='msg_module_oerp_partnercontrol_autocomplete']" position="replace">
+                <div>
+                    <p>To use PartnerControl.hu services you need to have a valid account. Registration is free of
+                        charge, but you need to give valid datas.</p>
+                    <a href="https://bisnode.hu" class="oe_link" target="_blank">
+                        <i class="fa fa-arrow-right"/> Subscibe to Bisnode PartnerControl Analytic Services
+                    </a>
+                </div>
+                <div class="mt16 row">
+                    <label for="pchu_username" string="Username" class="col-3 col-lg-3 o_light_label"/>
+                    <field name="pchu_username" nolabel="1"/>
+                    <label for="pchu_password" string="Password" class="col-3 col-lg-3 o_light_label"/>
+                    <field name="pchu_password" password="True" nolabel="1"/>
+                </div>
+                <div class="o_row">
+                    <field name="pchu_long_name" nolabel="1"/>
+                    <label for="pchu_long_name" string="Import With Long Name?" class="col-3 col-lg-3 o_light_label"/>
+                </div>
+                <div>
+                    <a href="https://www.partnercontrol.hu" class="oe_link" target="_blank">
+                        <i class="fa fa-arrow-right"/> Bisnode PartnerControl.hu Portal
+                    </a>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='partner_autocomplete_settings']//widget" position="before">
+                <div class="mt16 row">
+                    <label for="pchu_use_odoo_autocompolete" string="Enable Odoo IAP Autocomplete?"
+                           class="col-3 col-lg-3 o_light_label"/>
+                    <field name="pchu_use_odoo_autocompolete" nolabel="1"/>
+                    <label for="module_oerp_partner_autocomplete_noclearbit" string="Disable clearbit results?"
+                           class="col-3 col-lg-3 o_light_label"/>
+                    <field name="module_oerp_partner_autocomplete_noclearbit" nolabel="1"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

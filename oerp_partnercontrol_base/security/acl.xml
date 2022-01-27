@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data>
+
+    <record model="ir.module.category" id="module_category_partnercontrol_hu">
+        <field name="name">PartnerControl.hu</field>
+        <field name="description"></field>
+        <field name="sequence">7</field>
+    </record>
+
+    <record id="group_partnercontrol_user" model="res.groups">
+        <field name="name">View details</field>
+        <field name="category_id" ref="oerp_partnercontrol_base.module_category_partnercontrol_hu"/>
+    </record>
+
+    <record id="group_partnercontrol_admin" model="res.groups">
+        <field name="name">Monitoring Admin</field>
+        <field name="implied_ids" eval="[(4, ref('group_partnercontrol_user')),]"/>
+        <field name="category_id" ref="oerp_partnercontrol_base.module_category_partnercontrol_hu"/>
+    </record>
+
+</data><data noupdate="1">
+
+    <record id="oerp_partnercontrol_base.group_partnercontrol_admin" model="res.groups">
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+</data></odoo>
